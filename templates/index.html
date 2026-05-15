@@ -31,6 +31,9 @@
                         </div>
                         
                     <div id="tacheList">
+                        {% if taches == [] %}
+                            <p>Aucune tache</p>
+                        {% endif %}
                         {% for tache in taches %}
                             {% if tache[3] == 0 %}
                                 {% if tache[2] == 1 %}
