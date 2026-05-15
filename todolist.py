@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, session 
 from database import lolinit
-import sqlite3
+import psycopg2
+import os
 
 app = Flask(__name__)
 app.secret_key = "lol971!"
@@ -10,7 +11,7 @@ def inscription():
     if request.method == "POST":
         prenom = request.form["prenom"]
         mot_de_passe = request.form["mot_de_passe"]
-        connexion = sqlite3.connect("todo.db")
+        connexion = psycopg2.connect(os.environ.get("DATABASE_URL"))
         curseur = connexion.cursor()
         curseur.execute("INSERT INTO users (prenom, mot_de_passe) VALUES (?, ?)", (prenom, mot_de_passe))
         connexion.commit()
@@ -24,7 +25,7 @@ def connexion():
     if request.method == "POST":
         prenom = request.form["prenom"]
         mot_de_passe = request.form["mot_de_passe"]
-        connexion = sqlite3.connect("todo.db")
+        connexion = psycopg2.connect(os.environ.get("DATABASE_URL"))
         curseur = connexion.cursor()
         curseur.execute("SELECT * FROM users WHERE prenom = ? AND mot_de_passe = ?", (prenom, mot_de_passe))
         utilisateur = curseur.fetchone()
@@ -49,7 +50,7 @@ def home():
         # ajouter une tâche
         tache = request.form["tache"]
         important = request.form["important"]
-        connexion = sqlite3.connect("todo.db")
+        connexion = psycopg2.connect(os.environ.get("DATABASE_URL"))
         curseur = connexion.cursor()
         curseur.execute("INSERT INTO tasks (tache, important, statut, user_id) VALUES (?, ?, 0, ?)", (tache, important, session["user_id"]))
         connexion.commit()
@@ -57,7 +58,7 @@ def home():
         return redirect("/")
     
     # GET → récupérer les infos dans les tables
-    connexion = sqlite3.connect("todo.db")
+    connexion = psycopg2.connect(os.environ.get("DATABASE_URL"))
     curseur = connexion.cursor()
     curseur.execute("SELECT * FROM tasks WHERE user_id = ?", (session["user_id"],))
     taches = curseur.fetchall()
@@ -70,7 +71,7 @@ def home():
 def supprimer():
     if request.method == "POST":
         id = request.form["id"]
-        connexion = sqlite3.connect("todo.db")
+        connexion = psycopg2.connect(os.environ.get("DATABASE_URL"))
         curseur = connexion.cursor()
         curseur.execute("DELETE FROM tasks WHERE id = ?", (id,))
         connexion.commit()
@@ -81,7 +82,7 @@ def supprimer():
 def terminer():
     if request.method == "POST":
         id = request.form["id"]
-        connexion = sqlite3.connect("todo.db")
+        connexion = psycopg2.connect(os.environ.get("DATABASE_URL"))
         curseur = connexion.cursor()
         curseur.execute("UPDATE tasks SET statut = 1 WHERE id = ?", (id,))
         connexion.commit()
