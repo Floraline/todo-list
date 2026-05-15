@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #952503;
+    height: 100vh;
+}
+
+#container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER */
+#entete {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: rgba(222, 198, 158, 0.13);
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    color: rgb(255, 255, 255);
+    font-family: 'Niconne', cursive;
+    
+}
+
+#entete h1 {
+    font-size: 24px;
+}
+
+#entete input {
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+
+/* CORPS */
+#corps\ entier {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* PARTIE HAUTE */
+#haut {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+}
+
+#gauche {
+    width: 200px;
+    padding: 60px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    align-items: center;
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Niconne', cursive;
+    background-color: rgba(222, 198, 158, 0.13);
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    color: white;
+}
+
+#droite {
+    flex: 1;
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* FORMULAIRE AJOUT */
+#tache form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-family: 'Niconne', cursive;
+}
+
+#tache input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+}
+
+#tache select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+}
+
+#addBtn {
+    padding: 10px 20px;
+    background-color: #952503;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* LISTE TACHES */
+#tacheList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: 'Niconne', cursive;
+}
+
+.tache-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f9f0f5;
+    border-radius: 8px;
+}
+
+/* PARTIE BAS - TACHES FAITES */
+#bas {
+    padding: 20px;
+    font-family: 'Niconne', cursive;
+    font-size: 20px;
+    background-color: rgba(222, 198, 158, 0.13);
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    color: white;
+}
+
+#bas h2 {
+    margin-bottom: 15px;
+}
+
+#doneList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Niconne', cursive;
+}
+#tache img {
+    width: 150px;
+    position: absolute;
+    bottom: 110px;
+    right: 25px;
+    transform: scaleX(-1);
+}
+
+input{
+    font-family: 'Niconne', cursive;
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background-color: #95250340;
+    color: rgb(0, 0, 0);
+    
+
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="container">
+
+        <div id="entete">
+            <h1>Bonjour {{ utilisateur [1]}} ^^</h1>
+            <!--<h2>Date</h2><input type="text" id="date" placeholder="Entrer la date">-->
+            <a href="/deco">Se déconnecter</a>
+        </div>
+        <div id="corps entier">
+            <div id="haut">
+                <div id="gauche">
+                    <h2>To-Do List</h2>
+                </div>
+                <div id="droite">
+                    <div id="tache">
+                        <form action="/" method="POST">
+                            <input type="text" name="tache" placeholder="Entrer une tâche">
+                            <select name ="important">
+                                <option value="0">Normal</option>
+                                <option value="1">Important</option>
+                            </select>
+                            <button id="addBtn" type="submit">Ajouter</button>
+                        </form>
+                        <img src="https://media.tenor.com/npgKXA1Q-jAAAAAi/maplesaku-popcat.gif" alt="working">
+                        </div>
+                        
+                    <div id="tacheList">
+                        {% for tache in taches %}
+                            {% if tache[3] == 0 %}
+                                {% if tache[2] == 1 %}
+                                    <p>*{{ tache[1] }}*</p>
+                                    <form action ="/terminer" method="Post">
+                                        <input type="hidden" name="id" value="{{ tache[0] }}">
+                                        <button type="submit">Terminer</button>
+                                    </form>
+                                {% else %}
+                                    <p>- {{ tache[1] }}</p>
+                                    <form action ="/terminer" method="Post">
+                                        <input type="hidden" name="id" value="{{ tache[0] }}">
+                                        <button type="submit">Terminer</button>
+                                    </form>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+            <div id="bas">
+                <div id="titre"><h2>Done List</h2></div>
+                <div id="doneList">
+                    {% for tache in taches %}
+                        {% if tache[3] == 1 %}
+                            <p>-{{ tache[1] }}</p>
+                            <form action="/supprimer" method="POST">
+                                <input type="hidden" name="id" value="{{ tache[0] }}">
+                                <button type="submit">Supprimer</button>
+                            </form>
+                        {% endif %}
+                    {% endfor %}    
+                </div>
+            </div>
+        </div>
+    </div> 
+
+            
+
+
+</body>
+</html>

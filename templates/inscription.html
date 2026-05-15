@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inscription</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='inscription.css') }}">
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+   <div id = "entier">
+    <div id="titre"><h1>Inscription</h1></div>
+    <div id="corp">
+        <form action="/inscription" method="POST">
+            <p>Name</p>
+            <input type="text" id="name" name="prenom" placeholder="Entrer le nom">
+            <p>Mot de passe</p>
+            <input type="password" id="mdp" name="mot_de_passe" placeholder="Entrer le mdp">
+            <div id="bouton">
+                <button type="submit" id="inscrire">S'inscrire</button>
+                <p>J'ai deja un compte <a href="/connexion"> Se connecter</a></p>
+            </div>
+        </form>
+        <img src="https://media.tenor.com/SY2LROSQ9z0AAAAi/fried-egg.gif" alt="petit cochon">
+    </div>
+   </div>
+
+            
+
+
+</body>
+</html>

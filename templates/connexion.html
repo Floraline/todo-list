@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Connexion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='connexion.css') }}">
+    <link rel="stylesheet" href="connexion.css">
+    <link >
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+   <div id = "entier">
+    <div id="titre"> <h1>Connexion</h1> </div>
+    <div id="corp">
+        <form action="/connexion" method="POST">
+            <p>Name : </p>
+            <input type="text" id="name" name="prenom" placeholder="Entrer le nom">
+            <p>Mot de passe : </p>
+            <input type="password" id="mdp" name="mot_de_passe" placeholder="Entrer le mdp">
+            <div id="bouton">
+                <button type="submit" id="connexion">Connexion</button>
+                <p>Je n'ai pas de compte <a href="/inscription"> S'inscrire</a></p> 
+            </div>
+        </form>
+        <img src="https://media.tenor.com/SY2LROSQ9z0AAAAi/fried-egg.gif" alt="petit cochon">
+    </div>
+   </div>
+
+            
+
+
+</body>
+</html>

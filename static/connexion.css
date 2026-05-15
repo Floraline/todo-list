@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #e5c59d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#entier {
+    padding: 40px;
+    border-radius: 15px;
+    width: 350px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    height: 520px;
+    width: 400px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+
+#corp input {
+    width: 100%;
+    padding: 10px;
+    background-color:#d68233;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Niconne', cursive;
+}
+
+#titre {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 30px;
+    color: #d68233;
+    text-decoration: underline;
+    font-family: 'Niconne', cursive;
+}
+
+
+#corp {
+    font-family: 'Niconne', cursive;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+    
+}
+
+#corp form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#corp p {
+    color: #d68233;
+    margin-top: 15px;
+    font-size: 24px;
+}
+
+
+
+#bouton {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color:#d68233;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Niconne', cursive;
+}
+
+
+.background{
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+.background .shape{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+.shape:first-child{
+    background: linear-gradient(
+        #ff6b9d,
+        #ff8c69
+    );
+    left: -80px;
+    top: -80px;
+}
+.shape:last-child{
+    background: linear-gradient(
+        to right,
+        #ff512f,
+        #f09819
+    );
+    right: -30px;
+    bottom: -80px;
+}
+
+#bouton p {
+    color: #d68233;
+    text-decoration: none;
+    font-size: 15px;
+    
+}
+
+img {
+    width: 300px;
+    position: absolute;
+    bottom: -50px;
+    right: -250px;
+    transform: scaleX(-1);
+}
