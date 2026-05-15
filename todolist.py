@@ -13,7 +13,7 @@ def inscription():
         mot_de_passe = request.form["mot_de_passe"]
         connexion = psycopg2.connect(os.environ.get("DATABASE_URL"))
         curseur = connexion.cursor()
-        curseur.execute("INSERT INTO users (prenom, mot_de_passe) VALUES (?, ?)", (prenom, mot_de_passe))
+        curseur.execute("INSERT INTO users (prenom, mot_de_passe) VALUES (%s, %s)", (prenom, mot_de_passe))
         connexion.commit()
         connexion.close()
         return redirect("/connexion")
@@ -27,7 +27,7 @@ def connexion():
         mot_de_passe = request.form["mot_de_passe"]
         connexion = psycopg2.connect(os.environ.get("DATABASE_URL"))
         curseur = connexion.cursor()
-        curseur.execute("SELECT * FROM users WHERE prenom = ? AND mot_de_passe = ?", (prenom, mot_de_passe))
+        curseur.execute("SELECT * FROM users WHERE prenom = %s AND mot_de_passe = %s", (prenom, mot_de_passe))
         utilisateur = curseur.fetchone()
 
         if utilisateur:
@@ -52,7 +52,7 @@ def home():
         important = request.form["important"]
         connexion = psycopg2.connect(os.environ.get("DATABASE_URL"))
         curseur = connexion.cursor()
-        curseur.execute("INSERT INTO tasks (tache, important, statut, user_id) VALUES (?, ?, 0, ?)", (tache, important, session["user_id"]))
+        curseur.execute("INSERT INTO tasks (tache, important, statut, user_id) VALUES (%s, %s, 0, %s)", (tache, important, session["user_id"]))
         connexion.commit()
         connexion.close()
         return redirect("/")
@@ -60,9 +60,9 @@ def home():
     # GET → récupérer les infos dans les tables
     connexion = psycopg2.connect(os.environ.get("DATABASE_URL"))
     curseur = connexion.cursor()
-    curseur.execute("SELECT * FROM tasks WHERE user_id = ?", (session["user_id"],))
+    curseur.execute("SELECT * FROM tasks WHERE user_id = %s", (session["user_id"],))
     taches = curseur.fetchall()
-    curseur.execute("SELECT * FROM users WHERE id = ?", (session["user_id"],))
+    curseur.execute("SELECT * FROM users WHERE id = %s", (session["user_id"],))
     utilisateur = curseur.fetchone()
     connexion.close()
     return render_template("index.html", taches=taches,utilisateur=utilisateur)
@@ -73,7 +73,7 @@ def supprimer():
         id = request.form["id"]
         connexion = psycopg2.connect(os.environ.get("DATABASE_URL"))
         curseur = connexion.cursor()
-        curseur.execute("DELETE FROM tasks WHERE id = ?", (id,))
+        curseur.execute("DELETE FROM tasks WHERE id = %s", (id,))
         connexion.commit()
         connexion.close()
         return redirect("/")
@@ -84,7 +84,7 @@ def terminer():
         id = request.form["id"]
         connexion = psycopg2.connect(os.environ.get("DATABASE_URL"))
         curseur = connexion.cursor()
-        curseur.execute("UPDATE tasks SET statut = 1 WHERE id = ?", (id,))
+        curseur.execute("UPDATE tasks SET statut = 1 WHERE id = %s", (id,))
         connexion.commit()
         connexion.close()
         return redirect("/")
